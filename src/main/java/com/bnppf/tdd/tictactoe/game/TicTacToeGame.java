@@ -13,16 +13,18 @@ public class TicTacToeGame {
 	private static final char PLAYER_O = 'O';
 	
 	private char[][] gameBoard = new char[BOARD_SIZE][BOARD_SIZE];
+	private char currentPlayer;
 	
-	public void placeMoveOnTheBoard(int row, int column, char player) {
-		gameBoard[row][column] = player;
+	public void placeMoveOnTheBoard(int row, int column) {
+		currentPlayer = getNextPlayer();
+		gameBoard[row][column] = currentPlayer;
 	}
 
 	public char identifyPlayerAt(int row, int column) {
 		return gameBoard[row][column];
 	}
 	
-	public char getNextPlayer(char currentPlayer) {
+	public char getNextPlayer() {
 		return currentPlayer == PLAYER_X ? PLAYER_O : PLAYER_X;
 	}
 

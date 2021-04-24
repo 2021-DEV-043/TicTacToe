@@ -1,6 +1,5 @@
 package com.bnppf.tdd.tictactoe.game;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.DisplayName;
@@ -22,7 +21,7 @@ public class TicTacToeGameTest {
 	@Test
 	@DisplayName("Game should allow player X to play at any position on the board")
 	public void playerXShouldBeAbleToMakeMoveInAnyPositionOnTheBoardAndIdentifyTheSame() {
-		game.placeMoveOnTheBoard(POSITION_ONE, POSITION_ONE, PLAYER_X);
+		game.placeMoveOnTheBoard(POSITION_ONE, POSITION_ONE);
 
 		assertEquals(PLAYER_X, game.identifyPlayerAt(POSITION_ONE, POSITION_ONE));
 	}
@@ -30,8 +29,21 @@ public class TicTacToeGameTest {
 	@Test
 	@DisplayName("Should get next player based upon current player")
 	public void shouldGetNextPlayerBasedUponCurrentPlayer() {
-		assertAll(() -> assertEquals(PLAYER_X, game.getNextPlayer(PLAYER_O)),
-				() -> assertEquals(PLAYER_O, game.getNextPlayer(PLAYER_X)));
+		assertEquals(PLAYER_X, game.getNextPlayer());
+		game.placeMoveOnTheBoard(POSITION_ONE, POSITION_ONE);
+		
+		assertEquals(PLAYER_O, game.getNextPlayer());
+		
+	}
+	
+	@Test
+	@DisplayName("Game should switch players alternatively while playing")
+	public void playersShouldBeSwitchedAlternativelyWhilePlaying() {
+		game.placeMoveOnTheBoard(POSITION_ONE, POSITION_ONE);
+		assertEquals(PLAYER_X, game.identifyPlayerAt(POSITION_ONE, POSITION_ONE));
+
+		game.placeMoveOnTheBoard(0, 2);
+		assertEquals(PLAYER_O, game.identifyPlayerAt(0, 2));
 	}
 
 }
