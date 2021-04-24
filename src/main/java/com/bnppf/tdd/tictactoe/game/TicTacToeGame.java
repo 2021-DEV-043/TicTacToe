@@ -1,5 +1,7 @@
 package com.bnppf.tdd.tictactoe.game;
 
+import static com.bnppf.tdd.tictactoe.constant.GameConstants.POSITION_OUT_OF_RANGE_EXCEPTION_MESSAGE;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -17,7 +19,7 @@ public class TicTacToeGame {
 	
 	public void play(Position position) throws PositionOutOfRangeException {
 		if (gameBoard.isPositionOutOfRange(position)) {
-			throw new PositionOutOfRangeException("Invalid Position..!! Please provide a valid position within a range of 0 to 2");
+			throw new PositionOutOfRangeException(POSITION_OUT_OF_RANGE_EXCEPTION_MESSAGE);
 		}
 		
 		gameBoard.placeMoveOnTheBoard(position);
