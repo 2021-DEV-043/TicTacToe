@@ -1,5 +1,6 @@
 package com.bnppf.tdd.tictactoe.game;
 
+import static com.bnppf.tdd.tictactoe.constant.TestConstants.INVALID_POSITION_MINUS_ONE;
 import static com.bnppf.tdd.tictactoe.constant.TestConstants.INVALID_POSITION_THREE;
 import static com.bnppf.tdd.tictactoe.constant.TestConstants.PLAYER_O;
 import static com.bnppf.tdd.tictactoe.constant.TestConstants.PLAYER_X;
@@ -8,9 +9,15 @@ import static com.bnppf.tdd.tictactoe.constant.TestConstants.POSITION_TWO;
 import static com.bnppf.tdd.tictactoe.constant.TestConstants.POSITION_ZERO;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
+
+import java.util.stream.Stream;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -63,6 +70,20 @@ public class GameBoardTest {
 		Position invalidPosition = new Position(POSITION_ZERO, INVALID_POSITION_THREE);
 
 		assertTrue(gameBoard.isPositionOutOfRange(invalidPosition));
+	}
+	
+	@ParameterizedTest(name="#{index} - Test with Position: ({0},{1})")
+	@DisplayName("Additional check for different combinations of out of range positions")
+	@MethodSource("invalidPositionsProvider")
+	public void addditionalCheckForDifferentOutOfRangePositions(int row, int column) {
+		Position invalidPosition = new Position(row, column);
+
+		assertTrue(gameBoard.isPositionOutOfRange(invalidPosition));
+	}
+	
+	private static Stream<Arguments> invalidPositionsProvider() {
+		return Stream.of(arguments(INVALID_POSITION_MINUS_ONE, POSITION_ZERO),
+				arguments(INVALID_POSITION_THREE, POSITION_ONE), arguments(POSITION_ZERO, INVALID_POSITION_MINUS_ONE));
 	}
 
 }
