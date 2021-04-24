@@ -138,6 +138,19 @@ public class GameBoardTest {
 		assertTrue(gameBoard.isTopRightToBottomLeftDiagonalOccupiedBySamePlayer());
 	}
 	
+	@Test
+	@DisplayName("Check if all position on board are occupied by players")
+	public void shouldReturnTrueWhenAllPositionsOnBoardAreOccupied() {
+		int[][] moves = { { POSITION_ZERO, POSITION_ZERO }, { POSITION_ZERO, POSITION_ONE },
+				{ POSITION_ZERO, POSITION_TWO }, { POSITION_ONE, POSITION_ONE }, { POSITION_ONE, POSITION_ZERO },
+				{ POSITION_ONE, POSITION_TWO }, { POSITION_TWO, POSITION_ONE }, { POSITION_TWO, POSITION_ZERO },
+				{ POSITION_TWO, POSITION_TWO } };
+
+		placingMovesOnTheBoard(moves);
+
+		assertTrue(gameBoard.areAllPositionOnBoardOccupied());
+	}
+	
 	private static Stream<Arguments> invalidPositionsProvider() {
 		return Stream.of(arguments(INVALID_POSITION_MINUS_ONE, POSITION_ZERO),
 				arguments(INVALID_POSITION_THREE, POSITION_ONE), arguments(POSITION_ZERO, INVALID_POSITION_MINUS_ONE));

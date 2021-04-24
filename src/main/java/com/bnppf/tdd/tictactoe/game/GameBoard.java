@@ -22,10 +22,12 @@ public class GameBoard {
 
 	private char[][] board = new char[BOARD_SIZE][BOARD_SIZE];
 	private char currentPlayer;
+	private int moveCount = INDEX_ZERO;
 
 	public void placeMoveOnTheBoard(Position position) {
 		currentPlayer = getNextPlayer();
 		board[position.getRow()][position.getColumn()] = currentPlayer;
+		moveCount++;
 	}
 
 	public char identifyPlayerAt(Position position) {
@@ -78,6 +80,10 @@ public class GameBoard {
 	
 	public boolean isTopRightToBottomLeftDiagonalOccupiedBySamePlayer() {
 		return isOccupiedBySamePlayer(board[INDEX_ZERO][INDEX_TWO], board[INDEX_ONE][INDEX_ONE], board[INDEX_TWO][INDEX_ZERO]);
+	}
+	
+	public boolean areAllPositionOnBoardOccupied() {
+		return moveCount == 9;
 	}
 	
 	private boolean isOccupiedBySamePlayer(char position1, char position2, char position3) {
