@@ -7,6 +7,7 @@ import static com.bnppf.tdd.tictactoe.constant.GameConstants.EMPTY_POSITION;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.INDEX_ONE;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.INDEX_TWO;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.INDEX_ZERO;
+import static com.bnppf.tdd.tictactoe.constant.GameConstants.MAX_NUMBER_OF_POSITIONS;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.PLAYER_O;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.PLAYER_X;
 
@@ -83,7 +84,7 @@ public class GameBoard {
 	}
 	
 	public boolean areAllPositionOnBoardOccupied() {
-		return moveCount == 9;
+		return moveCount == MAX_NUMBER_OF_POSITIONS;
 	}
 	
 	private boolean isOccupiedBySamePlayer(char position1, char position2, char position3) {

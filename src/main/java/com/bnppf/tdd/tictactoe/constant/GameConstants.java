@@ -13,7 +13,8 @@ public final class GameConstants {
 	
 	public static final int BOARD_LOWER_RANGE = 0;
 	public static final int BOARD_UPPER_RANGE = 2;
-	
+	public static final int MAX_NUMBER_OF_POSITIONS = 9;
+
 	public static final int INDEX_ZERO = 0;
 	public static final int INDEX_ONE = 1;
 	public static final int INDEX_TWO = 2;
