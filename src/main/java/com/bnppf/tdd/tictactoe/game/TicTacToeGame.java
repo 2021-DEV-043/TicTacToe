@@ -5,6 +5,8 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import com.bnppf.tdd.tictactoe.model.Position;
+
 @Component
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class TicTacToeGame {
@@ -12,12 +14,12 @@ public class TicTacToeGame {
 	@Autowired
 	private GameBoard gameBoard;
 	
-	public void play(int row, int column) {
-		gameBoard.placeMoveOnTheBoard(row, column);
+	public void play(Position position) {
+		gameBoard.placeMoveOnTheBoard(position);
 	}
 
-	public char identifyPlayerAt(int row, int column) {
-		return gameBoard.identifyPlayerAt(row, column);
+	public char identifyPlayerAt(Position position) {
+		return gameBoard.identifyPlayerAt(position);
 	}
 	
 	public char getNextPlayer() {

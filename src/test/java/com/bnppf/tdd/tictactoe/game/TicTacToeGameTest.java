@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.bnppf.tdd.tictactoe.model.Position;
+
 @SpringBootTest
 public class TicTacToeGameTest {
 
@@ -23,16 +25,19 @@ public class TicTacToeGameTest {
 	@Test
 	@DisplayName("Game should allow player X to play at any position on the board")
 	public void playerXShouldBeAbleToMakeMoveInAnyPositionOnTheBoardAndIdentifyTheSame() {
-		game.play(POSITION_ONE, POSITION_ONE);
+		Position position = new Position(POSITION_ONE, POSITION_ONE);
+		game.play(position);
 
-		assertEquals(PLAYER_X, game.identifyPlayerAt(POSITION_ONE, POSITION_ONE));
+		assertEquals(PLAYER_X, game.identifyPlayerAt(position));
 	}
 	
 	@Test
 	@DisplayName("Should get next player based upon current player")
 	public void shouldGetNextPlayerBasedUponCurrentPlayer() {
 		assertEquals(PLAYER_X, game.getNextPlayer());
-		game.play(POSITION_ONE, POSITION_ONE);
+		
+		Position position = new Position(POSITION_ONE, POSITION_ONE);
+		game.play(position);
 		
 		assertEquals(PLAYER_O, game.getNextPlayer());
 		
@@ -41,11 +46,15 @@ public class TicTacToeGameTest {
 	@Test
 	@DisplayName("Game should switch players alternatively while playing")
 	public void playersShouldBeSwitchedAlternativelyWhilePlaying() {
-		game.play(POSITION_ONE, POSITION_ONE);
-		assertEquals(PLAYER_X, game.identifyPlayerAt(POSITION_ONE, POSITION_ONE));
+		Position position1 = new Position(POSITION_ONE, POSITION_ONE);
+		game.play(position1);
+		
+		assertEquals(PLAYER_X, game.identifyPlayerAt(position1));
 
-		game.play(POSITION_ZERO, POSITION_TWO);
-		assertEquals(PLAYER_O, game.identifyPlayerAt(POSITION_ZERO, POSITION_TWO));
+		Position position2 = new Position(POSITION_ZERO, POSITION_TWO);
+		game.play(position2);
+		
+		assertEquals(PLAYER_O, game.identifyPlayerAt(position2));
 	}
 
 }

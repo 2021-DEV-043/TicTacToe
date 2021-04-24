@@ -4,6 +4,8 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import com.bnppf.tdd.tictactoe.model.Position;
+
 @Component
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class GameBoard {
@@ -15,13 +17,13 @@ public class GameBoard {
 	private char[][] board = new char[BOARD_SIZE][BOARD_SIZE];
 	private char currentPlayer;
 
-	public void placeMoveOnTheBoard(int row, int column) {
+	public void placeMoveOnTheBoard(Position position) {
 		currentPlayer = getNextPlayer();
-		board[row][column] = currentPlayer;
+		board[position.getRow()][position.getColumn()] = currentPlayer;
 	}
 
-	public char identifyPlayerAt(int row, int column) {
-		return board[row][column];
+	public char identifyPlayerAt(Position position) {
+		return board[position.getRow()][position.getColumn()];
 	}
 
 	public char getNextPlayer() {
