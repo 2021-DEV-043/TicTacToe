@@ -4,6 +4,9 @@ import static com.bnppf.tdd.tictactoe.constant.GameConstants.BOARD_LOWER_RANGE;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.BOARD_SIZE;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.BOARD_UPPER_RANGE;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.EMPTY_POSITION;
+import static com.bnppf.tdd.tictactoe.constant.GameConstants.INDEX_ONE;
+import static com.bnppf.tdd.tictactoe.constant.GameConstants.INDEX_TWO;
+import static com.bnppf.tdd.tictactoe.constant.GameConstants.INDEX_ZERO;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.PLAYER_O;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.PLAYER_X;
 
@@ -43,10 +46,10 @@ public class GameBoard {
 	
 	public boolean isAnyRowOccupiedBySamePlayer() {
 		boolean isRowOccupied = false;
-		int row = 0;
+		int row = INDEX_ZERO;
 
 		while (!isRowOccupied && row < BOARD_SIZE) {
-			if (board[row][0] != EMPTY_POSITION && board[row][0] == board[row][1] && board[row][1] == board[row][2]) {
+			if (board[row][INDEX_ZERO] != EMPTY_POSITION && board[row][INDEX_ZERO] == board[row][INDEX_ONE] && board[row][INDEX_ONE] == board[row][INDEX_TWO]) {
 				isRowOccupied = true;
 			}
 			row++;
