@@ -1,5 +1,10 @@
 package com.bnppf.tdd.tictactoe.game;
 
+import static com.bnppf.tdd.tictactoe.constant.TestConstants.PLAYER_O;
+import static com.bnppf.tdd.tictactoe.constant.TestConstants.PLAYER_X;
+import static com.bnppf.tdd.tictactoe.constant.TestConstants.POSITION_ONE;
+import static com.bnppf.tdd.tictactoe.constant.TestConstants.POSITION_TWO;
+import static com.bnppf.tdd.tictactoe.constant.TestConstants.POSITION_ZERO;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.DisplayName;
@@ -11,13 +16,6 @@ import com.bnppf.tdd.tictactoe.model.Position;
 
 @SpringBootTest
 public class GameBoardTest {
-
-	private static final int POSITION_ZERO = 0;
-	private static final int POSITION_ONE = 1;
-	private static final int POSITION_TWO = 2;
-
-	private static final char PLAYER_X = 'X';
-	private static final char PLAYER_O = 'O';
 
 	@Autowired
 	private GameBoard gameBoard;
