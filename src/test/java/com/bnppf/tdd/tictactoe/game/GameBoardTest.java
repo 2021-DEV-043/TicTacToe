@@ -1,5 +1,6 @@
 package com.bnppf.tdd.tictactoe.game;
 
+import static com.bnppf.tdd.tictactoe.constant.TestConstants.INVALID_POSITION_THREE;
 import static com.bnppf.tdd.tictactoe.constant.TestConstants.PLAYER_O;
 import static com.bnppf.tdd.tictactoe.constant.TestConstants.PLAYER_X;
 import static com.bnppf.tdd.tictactoe.constant.TestConstants.POSITION_ONE;
@@ -59,7 +60,7 @@ public class GameBoardTest {
 	@Test
 	@DisplayName("Check if position is out of board range")
 	public void shouldReturnTrueWhenPositionIsOutOfRange() {
-		Position invalidPosition = new Position(POSITION_ZERO, 3);
+		Position invalidPosition = new Position(POSITION_ZERO, INVALID_POSITION_THREE);
 
 		assertTrue(gameBoard.isPositionOutOfRange(invalidPosition));
 	}
