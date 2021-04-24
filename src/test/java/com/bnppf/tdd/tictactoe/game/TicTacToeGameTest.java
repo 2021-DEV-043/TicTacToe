@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.bnppf.tdd.tictactoe.exception.PositionAlreadyOccupiedException;
 import com.bnppf.tdd.tictactoe.exception.PositionOutOfRangeException;
 import com.bnppf.tdd.tictactoe.model.Position;
 
@@ -25,7 +26,7 @@ public class TicTacToeGameTest {
 	
 	@Test
 	@DisplayName("Game should allow player X to play at any position on the board")
-	public void playerXShouldBeAbleToMakeMoveInAnyPositionOnTheBoardAndIdentifyTheSame() throws PositionOutOfRangeException {
+	public void playerXShouldBeAbleToMakeMoveInAnyPositionOnTheBoardAndIdentifyTheSame() throws PositionOutOfRangeException, PositionAlreadyOccupiedException {
 		Position position = new Position(POSITION_ONE, POSITION_ONE);
 		game.play(position);
 
@@ -34,7 +35,7 @@ public class TicTacToeGameTest {
 	
 	@Test
 	@DisplayName("Should get next player based upon current player")
-	public void shouldGetNextPlayerBasedUponCurrentPlayer() throws PositionOutOfRangeException {
+	public void shouldGetNextPlayerBasedUponCurrentPlayer() throws PositionOutOfRangeException, PositionAlreadyOccupiedException {
 		assertEquals(PLAYER_X, game.getNextPlayer());
 		
 		Position position = new Position(POSITION_ONE, POSITION_ONE);
@@ -46,7 +47,7 @@ public class TicTacToeGameTest {
 	
 	@Test
 	@DisplayName("Game should switch players alternatively while playing")
-	public void playersShouldBeSwitchedAlternativelyWhilePlaying() throws PositionOutOfRangeException {
+	public void playersShouldBeSwitchedAlternativelyWhilePlaying() throws PositionOutOfRangeException, PositionAlreadyOccupiedException {
 		Position position1 = new Position(POSITION_ONE, POSITION_ONE);
 		game.play(position1);
 		
@@ -64,6 +65,17 @@ public class TicTacToeGameTest {
 		Position position = new Position(POSITION_ONE, INVALID_POSITION_THREE);
 
 		assertThrows(PositionOutOfRangeException.class, () -> game.play(position));
+	}
+	
+	@Test
+	@DisplayName("Game should throw exception if position is already occupied")
+	public void shouldThrowExceptionIfPositionIsAlreadyOccupied() throws PositionOutOfRangeException, PositionAlreadyOccupiedException {
+		Position position1 = new Position(POSITION_ONE, POSITION_ONE);
+		game.play(position1);
+
+		Position position2 = new Position(POSITION_ONE, POSITION_ONE);
+
+		assertThrows(PositionAlreadyOccupiedException.class, () -> game.play(position2));
 	}
 
 }
