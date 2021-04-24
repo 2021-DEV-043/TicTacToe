@@ -1,5 +1,7 @@
 package com.bnppf.tdd.tictactoe.game;
 
+import static com.bnppf.tdd.tictactoe.constant.TestConstants.INDEX_ONE;
+import static com.bnppf.tdd.tictactoe.constant.TestConstants.INDEX_ZERO;
 import static com.bnppf.tdd.tictactoe.constant.TestConstants.INVALID_POSITION_MINUS_ONE;
 import static com.bnppf.tdd.tictactoe.constant.TestConstants.INVALID_POSITION_THREE;
 import static com.bnppf.tdd.tictactoe.constant.TestConstants.PLAYER_O;
@@ -94,20 +96,10 @@ public class GameBoardTest {
 	@Test
 	@DisplayName("Check if any row of the board is occupied by same player")
 	public void shouldReturnTrueWhenAnyRowOfTheBoardIsOccupiedBySamePlayer() {
-		Position pos1 = new Position(POSITION_ZERO, POSITION_ZERO);
-		gameBoard.placeMoveOnTheBoard(pos1);
-
-		Position pos2 = new Position(POSITION_ONE, POSITION_ONE);
-		gameBoard.placeMoveOnTheBoard(pos2);
-
-		Position pos3 = new Position(POSITION_ZERO, POSITION_ONE);
-		gameBoard.placeMoveOnTheBoard(pos3);
-
-		Position pos4 = new Position(POSITION_TWO, POSITION_ONE);
-		gameBoard.placeMoveOnTheBoard(pos4);
-
-		Position pos5 = new Position(POSITION_ZERO, POSITION_TWO);
-		gameBoard.placeMoveOnTheBoard(pos5);
+		int[][] moves = { { POSITION_ZERO, POSITION_ZERO }, { POSITION_ONE, POSITION_ONE },
+				{ POSITION_ZERO, POSITION_ONE }, { POSITION_TWO, POSITION_ONE }, { POSITION_ZERO, POSITION_TWO } };
+		
+		placingMovesOnTheBoard(moves);
 
 		assertTrue(gameBoard.isAnyRowOccupiedBySamePlayer());
 	}
@@ -115,20 +107,10 @@ public class GameBoardTest {
 	@Test
 	@DisplayName("Check if any column of the board is occupied by same player")
 	public void shouldReturnTrueWhenAnyColumnOfTheBoardIsOccupiedBySamePlayer() {
-		Position position1 = new Position(POSITION_ZERO, POSITION_ZERO);
-		gameBoard.placeMoveOnTheBoard(position1);
-
-		Position position2 = new Position(POSITION_ONE, POSITION_ONE);
-		gameBoard.placeMoveOnTheBoard(position2);
-
-		Position positon3 = new Position(POSITION_ONE, POSITION_ZERO);
-		gameBoard.placeMoveOnTheBoard(positon3);
-
-		Position position4 = new Position(POSITION_TWO, POSITION_ONE);
-		gameBoard.placeMoveOnTheBoard(position4);
-
-		Position position5 = new Position(POSITION_TWO, POSITION_ZERO);
-		gameBoard.placeMoveOnTheBoard(position5);
+		int[][] moves = { { POSITION_ZERO, POSITION_ZERO }, { POSITION_ONE, POSITION_ONE },
+				{ POSITION_ONE, POSITION_ZERO }, { POSITION_TWO, POSITION_ONE }, { POSITION_TWO, POSITION_ZERO } };
+		
+		placingMovesOnTheBoard(moves);
 
 		assertTrue(gameBoard.isAnyColumnOccupiedBySamePlayer());
 	}
@@ -136,6 +118,15 @@ public class GameBoardTest {
 	private static Stream<Arguments> invalidPositionsProvider() {
 		return Stream.of(arguments(INVALID_POSITION_MINUS_ONE, POSITION_ZERO),
 				arguments(INVALID_POSITION_THREE, POSITION_ONE), arguments(POSITION_ZERO, INVALID_POSITION_MINUS_ONE));
+	}
+	
+	private void placingMovesOnTheBoard(int[][] moves) {
+		Position position;
+
+		for (int i = INDEX_ZERO; i < moves.length; i++) {
+			position = new Position(moves[i][INDEX_ZERO], moves[i][INDEX_ONE]);
+			gameBoard.placeMoveOnTheBoard(position);
+		}
 	}
 
 }

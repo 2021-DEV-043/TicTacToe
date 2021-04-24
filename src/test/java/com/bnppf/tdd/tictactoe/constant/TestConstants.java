@@ -14,4 +14,7 @@ public final class TestConstants {
 
 	public static final char PLAYER_X = 'X';
 	public static final char PLAYER_O = 'O';
+	
+	public static final int INDEX_ZERO = 0;
+	public static final int INDEX_ONE = 1;
 }
