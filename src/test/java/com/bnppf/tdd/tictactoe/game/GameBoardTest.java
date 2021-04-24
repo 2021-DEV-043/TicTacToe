@@ -112,6 +112,27 @@ public class GameBoardTest {
 		assertTrue(gameBoard.isAnyRowOccupiedBySamePlayer());
 	}
 	
+	@Test
+	@DisplayName("Check if any column of the board is occupied by same player")
+	public void shouldReturnTrueWhenAnyColumnOfTheBoardIsOccupiedBySamePlayer() {
+		Position position1 = new Position(POSITION_ZERO, POSITION_ZERO);
+		gameBoard.placeMoveOnTheBoard(position1);
+
+		Position position2 = new Position(POSITION_ONE, POSITION_ONE);
+		gameBoard.placeMoveOnTheBoard(position2);
+
+		Position positon3 = new Position(POSITION_ONE, POSITION_ZERO);
+		gameBoard.placeMoveOnTheBoard(positon3);
+
+		Position position4 = new Position(POSITION_TWO, POSITION_ONE);
+		gameBoard.placeMoveOnTheBoard(position4);
+
+		Position position5 = new Position(POSITION_TWO, POSITION_ZERO);
+		gameBoard.placeMoveOnTheBoard(position5);
+
+		assertTrue(gameBoard.isAnyColumnOccupiedBySamePlayer());
+	}
+	
 	private static Stream<Arguments> invalidPositionsProvider() {
 		return Stream.of(arguments(INVALID_POSITION_MINUS_ONE, POSITION_ZERO),
 				arguments(INVALID_POSITION_THREE, POSITION_ONE), arguments(POSITION_ZERO, INVALID_POSITION_MINUS_ONE));

@@ -57,5 +57,19 @@ public class GameBoard {
 
 		return isRowOccupied;
 	}
+	
+	public boolean isAnyColumnOccupiedBySamePlayer() {
+		boolean isColumnOccupied = false;
+		int column = INDEX_ZERO;
+
+		while (!isColumnOccupied && column < BOARD_SIZE) {
+			if (board[INDEX_ZERO][column] != EMPTY_POSITION && board[INDEX_ZERO][column] == board[INDEX_ONE][column] && board[INDEX_ONE][column] == board[INDEX_TWO][column]) {
+				isColumnOccupied = true;
+			}
+			column++;
+		}
+
+		return isColumnOccupied;
+	}
 
 }
