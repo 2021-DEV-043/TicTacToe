@@ -1,5 +1,6 @@
 package com.bnppf.tdd.tictactoe.game;
 
+import static com.bnppf.tdd.tictactoe.constant.GameConstants.POSITION_OCCUPIED_EXCEPTION_MESSAGE;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.POSITION_OUT_OF_RANGE_EXCEPTION_MESSAGE;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +20,7 @@ public class TicTacToeGame {
 	private GameBoard gameBoard;
 	
 	public void play(Position position) throws PositionOutOfRangeException, PositionAlreadyOccupiedException {
-		if (gameBoard.isPositionOutOfRange(position)) {
-			throw new PositionOutOfRangeException(POSITION_OUT_OF_RANGE_EXCEPTION_MESSAGE);
-		}
-		if (gameBoard.isPositionOccupied(position)) {
-			throw new PositionAlreadyOccupiedException("Position is already occupied by other player. Please choose a different position.");
-		}
-		
+		validatePlayingConditions(position);
 		gameBoard.placeMoveOnTheBoard(position);
 	}
 
@@ -35,6 +30,15 @@ public class TicTacToeGame {
 	
 	public char getNextPlayer() {
 		return gameBoard.getNextPlayer();
+	}
+	
+	private void validatePlayingConditions(Position position) throws PositionOutOfRangeException, PositionAlreadyOccupiedException {
+		if (gameBoard.isPositionOutOfRange(position)) {
+			throw new PositionOutOfRangeException(POSITION_OUT_OF_RANGE_EXCEPTION_MESSAGE);
+		}
+		if (gameBoard.isPositionOccupied(position)) {
+			throw new PositionAlreadyOccupiedException(POSITION_OCCUPIED_EXCEPTION_MESSAGE);
+		}
 	}
 
 }
