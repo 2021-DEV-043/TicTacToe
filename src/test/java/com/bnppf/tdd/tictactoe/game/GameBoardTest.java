@@ -91,6 +91,27 @@ public class GameBoardTest {
 		assertTrue(gameBoard.isPositionOccupied(position2));
 	}
 	
+	@Test
+	@DisplayName("Check if any row of the board is occupied by same player")
+	public void shouldReturnTrueWhenAnyRowOfTheBoardIsOccupiedBySamePlayer() {
+		Position pos1 = new Position(POSITION_ZERO, POSITION_ZERO);
+		gameBoard.placeMoveOnTheBoard(pos1);
+
+		Position pos2 = new Position(POSITION_ONE, POSITION_ONE);
+		gameBoard.placeMoveOnTheBoard(pos2);
+
+		Position pos3 = new Position(POSITION_ZERO, POSITION_ONE);
+		gameBoard.placeMoveOnTheBoard(pos3);
+
+		Position pos4 = new Position(POSITION_TWO, POSITION_ONE);
+		gameBoard.placeMoveOnTheBoard(pos4);
+
+		Position pos5 = new Position(POSITION_ZERO, POSITION_TWO);
+		gameBoard.placeMoveOnTheBoard(pos5);
+
+		assertTrue(gameBoard.isAnyRowOccupiedBySamePlayer());
+	}
+	
 	private static Stream<Arguments> invalidPositionsProvider() {
 		return Stream.of(arguments(INVALID_POSITION_MINUS_ONE, POSITION_ZERO),
 				arguments(INVALID_POSITION_THREE, POSITION_ONE), arguments(POSITION_ZERO, INVALID_POSITION_MINUS_ONE));

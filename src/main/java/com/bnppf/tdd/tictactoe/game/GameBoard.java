@@ -40,5 +40,19 @@ public class GameBoard {
 	public boolean isPositionOccupied(Position position) {
 		return board[position.getRow()][position.getColumn()] != EMPTY_POSITION;
 	}
+	
+	public boolean isAnyRowOccupiedBySamePlayer() {
+		boolean isRowOccupied = false;
+		int row = 0;
+
+		while (!isRowOccupied && row < BOARD_SIZE) {
+			if (board[row][0] != EMPTY_POSITION && board[row][0] == board[row][1] && board[row][1] == board[row][2]) {
+				isRowOccupied = true;
+			}
+			row++;
+		}
+
+		return isRowOccupied;
+	}
 
 }
