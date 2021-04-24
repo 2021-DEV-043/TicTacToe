@@ -10,7 +10,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class TicTacToeGameTest {
 
+	private static final int POSITION_ZERO = 0;
 	private static final int POSITION_ONE = 1;
+	private static final int POSITION_TWO = 2;
 	
 	private static final char PLAYER_X = 'X';
 	private static final char PLAYER_O = 'O';
@@ -42,8 +44,8 @@ public class TicTacToeGameTest {
 		game.placeMoveOnTheBoard(POSITION_ONE, POSITION_ONE);
 		assertEquals(PLAYER_X, game.identifyPlayerAt(POSITION_ONE, POSITION_ONE));
 
-		game.placeMoveOnTheBoard(0, 2);
-		assertEquals(PLAYER_O, game.identifyPlayerAt(0, 2));
+		game.placeMoveOnTheBoard(POSITION_ZERO, POSITION_TWO);
+		assertEquals(PLAYER_O, game.identifyPlayerAt(POSITION_ZERO, POSITION_TWO));
 	}
 
 }
