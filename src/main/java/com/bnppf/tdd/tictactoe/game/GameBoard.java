@@ -48,8 +48,8 @@ public class GameBoard {
 		boolean isRowOccupied = false;
 		int row = INDEX_ZERO;
 
-		while (!isRowOccupied && row < BOARD_SIZE) {
-			if (board[row][INDEX_ZERO] != EMPTY_POSITION && board[row][INDEX_ZERO] == board[row][INDEX_ONE] && board[row][INDEX_ONE] == board[row][INDEX_TWO]) {
+		while (isWithinBoardLimitAndNotOccupiedBySamePlayer(isRowOccupied, row)) {
+			if (isOccupiedBySamePlayer(board[row][INDEX_ZERO], board[row][INDEX_ONE], board[row][INDEX_TWO])) {
 				isRowOccupied = true;
 			}
 			row++;
@@ -62,14 +62,22 @@ public class GameBoard {
 		boolean isColumnOccupied = false;
 		int column = INDEX_ZERO;
 
-		while (!isColumnOccupied && column < BOARD_SIZE) {
-			if (board[INDEX_ZERO][column] != EMPTY_POSITION && board[INDEX_ZERO][column] == board[INDEX_ONE][column] && board[INDEX_ONE][column] == board[INDEX_TWO][column]) {
+		while (isWithinBoardLimitAndNotOccupiedBySamePlayer(isColumnOccupied, column)) {
+			if (isOccupiedBySamePlayer(board[INDEX_ZERO][column], board[INDEX_ONE][column], board[INDEX_TWO][column])) {
 				isColumnOccupied = true;
 			}
 			column++;
 		}
 
 		return isColumnOccupied;
+	}
+	
+	private boolean isOccupiedBySamePlayer(char position1, char position2, char position3) {
+		return position1 != EMPTY_POSITION && position1 == position2 && position2 == position3;
+	}
+
+	private boolean isWithinBoardLimitAndNotOccupiedBySamePlayer(boolean isOccupiedFlag, int rowOrColumnIndex) {
+		return !isOccupiedFlag && rowOrColumnIndex < BOARD_SIZE;
 	}
 
 }
