@@ -3,6 +3,7 @@ package com.bnppf.tdd.tictactoe.game;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.BOARD_LOWER_RANGE;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.BOARD_SIZE;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.BOARD_UPPER_RANGE;
+import static com.bnppf.tdd.tictactoe.constant.GameConstants.EMPTY_POSITION;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.PLAYER_O;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.PLAYER_X;
 
@@ -37,7 +38,7 @@ public class GameBoard {
 	}
 	
 	public boolean isPositionOccupied(Position position) {
-		return board[position.getRow()][position.getColumn()] != '\0';
+		return board[position.getRow()][position.getColumn()] != EMPTY_POSITION;
 	}
 
 }
