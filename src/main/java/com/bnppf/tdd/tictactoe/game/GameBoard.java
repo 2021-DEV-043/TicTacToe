@@ -72,6 +72,10 @@ public class GameBoard {
 		return isColumnOccupied;
 	}
 	
+	public boolean isTopLeftToBottomRightDiagonalOccupiedBySamePlayer() {
+		return isOccupiedBySamePlayer(board[INDEX_ZERO][INDEX_ZERO], board[INDEX_ONE][INDEX_ONE], board[INDEX_TWO][INDEX_TWO]);
+	}
+	
 	private boolean isOccupiedBySamePlayer(char position1, char position2, char position3) {
 		return position1 != EMPTY_POSITION && position1 == position2 && position2 == position3;
 	}

@@ -115,6 +115,17 @@ public class GameBoardTest {
 		assertTrue(gameBoard.isAnyColumnOccupiedBySamePlayer());
 	}
 	
+	@Test
+	@DisplayName("Check if top left to bottom right diagonal of the board is occupied by same player")
+	public void shouldReturnTrueWhenDiagonalFromTopLeftToBottomRightOfTheBoardIsOccupiedBySamePlayer() {
+		int[][] moves = { { POSITION_ZERO, POSITION_ZERO }, { POSITION_ZERO, POSITION_ONE },
+				{ POSITION_ONE, POSITION_ONE }, { POSITION_TWO, POSITION_ONE }, { POSITION_TWO, POSITION_TWO } };
+
+		placingMovesOnTheBoard(moves);
+
+		assertTrue(gameBoard.isTopLeftToBottomRightDiagonalOccupiedBySamePlayer());
+	}
+	
 	private static Stream<Arguments> invalidPositionsProvider() {
 		return Stream.of(arguments(INVALID_POSITION_MINUS_ONE, POSITION_ZERO),
 				arguments(INVALID_POSITION_THREE, POSITION_ONE), arguments(POSITION_ZERO, INVALID_POSITION_MINUS_ONE));
