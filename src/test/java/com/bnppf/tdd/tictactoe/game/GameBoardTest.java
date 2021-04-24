@@ -81,6 +81,16 @@ public class GameBoardTest {
 		assertTrue(gameBoard.isPositionOutOfRange(invalidPosition));
 	}
 	
+	@Test
+	@DisplayName("Check if input position already occupied")
+	public void shouldReturnTrueIfPositionAlreadyOccupied() {
+		Position position1 = new Position(POSITION_ZERO, POSITION_TWO);
+		gameBoard.placeMoveOnTheBoard(position1);
+		Position position2 = new Position(POSITION_ZERO, POSITION_TWO);
+
+		assertTrue(gameBoard.isPositionOccupied(position2));
+	}
+	
 	private static Stream<Arguments> invalidPositionsProvider() {
 		return Stream.of(arguments(INVALID_POSITION_MINUS_ONE, POSITION_ZERO),
 				arguments(INVALID_POSITION_THREE, POSITION_ONE), arguments(POSITION_ZERO, INVALID_POSITION_MINUS_ONE));

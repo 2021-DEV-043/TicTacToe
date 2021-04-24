@@ -35,5 +35,9 @@ public class GameBoard {
 	public boolean isPositionOutOfRange(Position position) {
 		return (position.getRow() < BOARD_LOWER_RANGE || position.getRow() > BOARD_UPPER_RANGE || position.getColumn() < BOARD_LOWER_RANGE || position.getColumn() > BOARD_UPPER_RANGE);
 	}
+	
+	public boolean isPositionOccupied(Position position) {
+		return board[position.getRow()][position.getColumn()] != '\0';
+	}
 
 }
