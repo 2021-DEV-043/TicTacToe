@@ -8,44 +8,44 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class TicTacToeGameTest {
+public class GameBoardTest {
 
 	private static final int POSITION_ZERO = 0;
 	private static final int POSITION_ONE = 1;
 	private static final int POSITION_TWO = 2;
-	
+
 	private static final char PLAYER_X = 'X';
 	private static final char PLAYER_O = 'O';
-	
-	@Autowired
-	private TicTacToeGame game;
-	
-	@Test
-	@DisplayName("Game should allow player X to play at any position on the board")
-	public void playerXShouldBeAbleToMakeMoveInAnyPositionOnTheBoardAndIdentifyTheSame() {
-		game.play(POSITION_ONE, POSITION_ONE);
 
-		assertEquals(PLAYER_X, game.identifyPlayerAt(POSITION_ONE, POSITION_ONE));
+	@Autowired
+	private GameBoard gameBoard;
+
+	@Test
+	@DisplayName("Board to accept a move at a poistion from Player X")
+	public void playerXShouldBeAbleToMakeMoveInAnyPositionOnTheBoardAndIdentifyTheSame() {
+		gameBoard.placeMoveOnTheBoard(POSITION_ONE, POSITION_ONE);
+
+		assertEquals(PLAYER_X, gameBoard.identifyPlayerAt(POSITION_ONE, POSITION_ONE));
 	}
-	
+
 	@Test
 	@DisplayName("Should get next player based upon current player")
 	public void shouldGetNextPlayerBasedUponCurrentPlayer() {
-		assertEquals(PLAYER_X, game.getNextPlayer());
-		game.play(POSITION_ONE, POSITION_ONE);
+		assertEquals(PLAYER_X, gameBoard.getNextPlayer());
+		gameBoard.placeMoveOnTheBoard(POSITION_ONE, POSITION_ONE);
 		
-		assertEquals(PLAYER_O, game.getNextPlayer());
+		assertEquals(PLAYER_O, gameBoard.getNextPlayer());
 		
 	}
 	
 	@Test
-	@DisplayName("Game should switch players alternatively while playing")
+	@DisplayName("Players should be switched alternatively while placing moves on the board")
 	public void playersShouldBeSwitchedAlternativelyWhilePlaying() {
-		game.play(POSITION_ONE, POSITION_ONE);
-		assertEquals(PLAYER_X, game.identifyPlayerAt(POSITION_ONE, POSITION_ONE));
+		gameBoard.placeMoveOnTheBoard(POSITION_ONE, POSITION_ONE);
+		assertEquals(PLAYER_X, gameBoard.identifyPlayerAt(POSITION_ONE, POSITION_ONE));
 
-		game.play(POSITION_ZERO, POSITION_TWO);
-		assertEquals(PLAYER_O, game.identifyPlayerAt(POSITION_ZERO, POSITION_TWO));
+		gameBoard.placeMoveOnTheBoard(POSITION_ZERO, POSITION_TWO);
+		assertEquals(PLAYER_O, gameBoard.identifyPlayerAt(POSITION_ZERO, POSITION_TWO));
 	}
 
 }
