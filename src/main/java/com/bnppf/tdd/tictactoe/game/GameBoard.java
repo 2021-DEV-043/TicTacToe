@@ -1,6 +1,8 @@
 package com.bnppf.tdd.tictactoe.game;
 
+import static com.bnppf.tdd.tictactoe.constant.GameConstants.BOARD_LOWER_RANGE;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.BOARD_SIZE;
+import static com.bnppf.tdd.tictactoe.constant.GameConstants.BOARD_UPPER_RANGE;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.PLAYER_O;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.PLAYER_X;
 
@@ -31,7 +33,7 @@ public class GameBoard {
 	}
 	
 	public boolean isPositionOutOfRange(Position position) {
-		return (position.getRow() < 0 || position.getRow() > 2 || position.getColumn() < 0 || position.getColumn() > 2);
+		return (position.getRow() < BOARD_LOWER_RANGE || position.getRow() > BOARD_UPPER_RANGE || position.getColumn() < BOARD_LOWER_RANGE || position.getColumn() > BOARD_UPPER_RANGE);
 	}
 
 }
