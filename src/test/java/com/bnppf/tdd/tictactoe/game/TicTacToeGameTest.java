@@ -12,7 +12,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class TicTacToeGameTest {
 
 	private static final int POSITION_ONE = 1;
+	
 	private static final char PLAYER_X = 'X';
+	private static final char PLAYER_O = 'O';
 	
 	@Autowired
 	private TicTacToeGame game;
@@ -28,8 +30,8 @@ public class TicTacToeGameTest {
 	@Test
 	@DisplayName("Should get next player based upon current player")
 	public void shouldGetNextPlayerBasedUponCurrentPlayer() {
-		assertAll(() -> assertEquals(PLAYER_X, game.getNextPlayer('O')),
-				() -> assertEquals('O', game.getNextPlayer(PLAYER_X)));
+		assertAll(() -> assertEquals(PLAYER_X, game.getNextPlayer(PLAYER_O)),
+				() -> assertEquals(PLAYER_O, game.getNextPlayer(PLAYER_X)));
 	}
 
 }
