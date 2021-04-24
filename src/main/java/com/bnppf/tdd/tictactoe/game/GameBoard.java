@@ -29,5 +29,9 @@ public class GameBoard {
 	public char getNextPlayer() {
 		return currentPlayer == PLAYER_X ? PLAYER_O : PLAYER_X;
 	}
+	
+	public boolean isPositionOutOfRange(Position position) {
+		return (position.getRow() < 0 || position.getRow() > 2 || position.getColumn() < 0 || position.getColumn() > 2);
+	}
 
 }

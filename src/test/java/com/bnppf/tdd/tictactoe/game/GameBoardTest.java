@@ -6,6 +6,7 @@ import static com.bnppf.tdd.tictactoe.constant.TestConstants.POSITION_ONE;
 import static com.bnppf.tdd.tictactoe.constant.TestConstants.POSITION_TWO;
 import static com.bnppf.tdd.tictactoe.constant.TestConstants.POSITION_ZERO;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -53,6 +54,14 @@ public class GameBoardTest {
 		gameBoard.placeMoveOnTheBoard(position2);
 		
 		assertEquals(PLAYER_O, gameBoard.identifyPlayerAt(position2));
+	}
+	
+	@Test
+	@DisplayName("Check if position is out of board range")
+	public void shouldReturnTrueWhenPositionIsOutOfRange() {
+		Position invalidPosition = new Position(POSITION_ZERO, 3);
+
+		assertTrue(gameBoard.isPositionOutOfRange(invalidPosition));
 	}
 
 }
