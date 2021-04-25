@@ -26,5 +26,6 @@ public final class GameConstants {
 	public static final String GAME_WINNER_MESSAGE = "Winner of the game is Player";
 	public static final String GAME_DRAW_MESSAGE = "It's a Draw Game";
 	
+	public static final String VALID_PATTERN = "\\d+";
 	public static final int USER_INPUT_SIZE = 2;
 }
