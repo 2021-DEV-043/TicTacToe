@@ -1,6 +1,7 @@
 package com.bnppf.tdd.tictactoe.game;
 
 import static com.bnppf.tdd.tictactoe.constant.TestConstants.GAME_CONTINUE_MESSAGE;
+import static com.bnppf.tdd.tictactoe.constant.TestConstants.GAME_DRAW_MESSAGE;
 import static com.bnppf.tdd.tictactoe.constant.TestConstants.GAME_WINNER_PLAYERO_MESSAGE;
 import static com.bnppf.tdd.tictactoe.constant.TestConstants.GAME_WINNER_PLAYERX_MESSAGE;
 import static com.bnppf.tdd.tictactoe.constant.TestConstants.INDEX_ONE;
@@ -154,7 +155,7 @@ public class TicTacToeGameTest {
 
 		Position position = new Position(POSITION_TWO, POSITION_TWO);
 
-		assertEquals("It's a Draw Game", game.play(position));
+		assertEquals(GAME_DRAW_MESSAGE, game.play(position));
 	}
 	
 	private void playEarlierMoves(int[][] moves) throws PositionOutOfRangeException, PositionAlreadyOccupiedException {

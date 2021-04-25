@@ -21,4 +21,5 @@ public final class TestConstants {
 	public static final String GAME_CONTINUE_MESSAGE = "Continue..!!";
 	public static final String GAME_WINNER_PLAYERX_MESSAGE = "Winner of the game is Player 'X'";
 	public static final String GAME_WINNER_PLAYERO_MESSAGE = "Winner of the game is Player 'O'";
+	public static final String GAME_DRAW_MESSAGE = "It's a Draw Game";
 }
