@@ -19,4 +19,5 @@ public final class TestConstants {
 	public static final int INDEX_ONE = 1;
 	
 	public static final String GAME_CONTINUE_MESSAGE = "Continue..!!";
+	public static final String GAME_WINNER_PLAYERX_MESSAGE = "Winner of the game is Player 'X'";
 }

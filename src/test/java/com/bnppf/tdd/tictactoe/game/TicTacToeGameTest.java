@@ -1,6 +1,7 @@
 package com.bnppf.tdd.tictactoe.game;
 
 import static com.bnppf.tdd.tictactoe.constant.TestConstants.GAME_CONTINUE_MESSAGE;
+import static com.bnppf.tdd.tictactoe.constant.TestConstants.GAME_WINNER_PLAYERX_MESSAGE;
 import static com.bnppf.tdd.tictactoe.constant.TestConstants.INVALID_POSITION_THREE;
 import static com.bnppf.tdd.tictactoe.constant.TestConstants.PLAYER_O;
 import static com.bnppf.tdd.tictactoe.constant.TestConstants.PLAYER_X;
@@ -104,7 +105,7 @@ public class TicTacToeGameTest {
 
 		Position position5 = new Position(POSITION_ZERO, POSITION_TWO);
 
-		assertEquals("Winner of the game is Player 'X'", game.play(position5));
+		assertEquals(GAME_WINNER_PLAYERX_MESSAGE, game.play(position5));
 	}
 
 }
