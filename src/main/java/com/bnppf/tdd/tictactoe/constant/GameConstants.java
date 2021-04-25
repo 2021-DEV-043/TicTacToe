@@ -23,4 +23,5 @@ public final class GameConstants {
 	public static final String POSITION_OCCUPIED_EXCEPTION_MESSAGE = "Position is already occupied by other player. Please choose a different position.";
 	
 	public static final String GAME_CONTINUE_MESSAGE = "Continue..!!";
+	public static final String GAME_WINNER_MESSAGE = "Winner of the game is Player";
 }

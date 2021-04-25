@@ -1,6 +1,7 @@
 package com.bnppf.tdd.tictactoe.game;
 
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.GAME_CONTINUE_MESSAGE;
+import static com.bnppf.tdd.tictactoe.constant.GameConstants.GAME_WINNER_MESSAGE;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.POSITION_OCCUPIED_EXCEPTION_MESSAGE;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.POSITION_OUT_OF_RANGE_EXCEPTION_MESSAGE;
 
@@ -27,7 +28,7 @@ public class TicTacToeGame {
 		gameBoard.placeMoveOnTheBoard(position);
 		
 		if (gameBoard.isAnyRowOccupiedBySamePlayer()) {
-			result = String.format("Winner of the game is Player '%s'", gameBoard.identifyPlayerAt(position));
+			result = String.format("%s '%s'", GAME_WINNER_MESSAGE, gameBoard.identifyPlayerAt(position));
 		} else if (!gameBoard.areAllPositionOnBoardOccupied()) {
 			result = GAME_CONTINUE_MESSAGE;
 		}
