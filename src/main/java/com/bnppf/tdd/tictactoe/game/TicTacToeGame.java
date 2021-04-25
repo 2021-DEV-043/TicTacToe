@@ -29,7 +29,9 @@ public class TicTacToeGame {
 		
 		if (isPlayerWinner()) {
 			result = String.format("%s '%s'", GAME_WINNER_MESSAGE, gameBoard.identifyPlayerAt(position));
-		} else if (!gameBoard.areAllPositionOnBoardOccupied()) {
+		} else if (gameBoard.areAllPositionOnBoardOccupied()) {
+			result = "It's a Draw Game";
+		} else {
 			result = GAME_CONTINUE_MESSAGE;
 		}
 		return result;

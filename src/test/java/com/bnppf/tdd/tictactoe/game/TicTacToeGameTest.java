@@ -143,6 +143,20 @@ public class TicTacToeGameTest {
 		assertEquals(GAME_WINNER_PLAYERO_MESSAGE, game.play(position));
 	}
 	
+	@Test
+	@DisplayName("Game should be declared as draw if all positions on board are occupied by players")
+	public void declareTheGameAsDrawIfAllPositionsOnBoardAreOccupied() throws PositionOutOfRangeException, PositionAlreadyOccupiedException {
+		int[][] moves = { { POSITION_ZERO, POSITION_ZERO }, { POSITION_ZERO, POSITION_ONE },
+				{ POSITION_ZERO, POSITION_TWO }, { POSITION_ONE, POSITION_ONE }, { POSITION_ONE, POSITION_ZERO },
+				{ POSITION_ONE, POSITION_TWO }, { POSITION_TWO, POSITION_ONE }, { POSITION_TWO, POSITION_ZERO } };
+
+		playEarlierMoves(moves);
+
+		Position position = new Position(POSITION_TWO, POSITION_TWO);
+
+		assertEquals("It's a Draw Game", game.play(position));
+	}
+	
 	private void playEarlierMoves(int[][] moves) throws PositionOutOfRangeException, PositionAlreadyOccupiedException {
 		Position position;
 
