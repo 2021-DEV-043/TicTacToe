@@ -19,9 +19,16 @@ public class TicTacToeGame {
 	@Autowired
 	private GameBoard gameBoard;
 	
-	public void play(Position position) throws PositionOutOfRangeException, PositionAlreadyOccupiedException {
+	public String play(Position position) throws PositionOutOfRangeException, PositionAlreadyOccupiedException {
+		String result = null;
+		
 		validatePlayingConditions(position);
 		gameBoard.placeMoveOnTheBoard(position);
+		
+		if (!gameBoard.areAllPositionOnBoardOccupied()) {
+			result = "Continue..!!";
+		}
+		return result;
 	}
 
 	public char identifyPlayerAt(Position position) {

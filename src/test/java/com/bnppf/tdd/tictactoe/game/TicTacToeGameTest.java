@@ -77,5 +77,13 @@ public class TicTacToeGameTest {
 
 		assertThrows(PositionAlreadyOccupiedException.class, () -> game.play(position2));
 	}
+	
+	@Test
+	@DisplayName("Game should return continue if any position available")
+	public void shouldReturnContinueIfAnyPositionAvailableForPlayer() throws PositionOutOfRangeException, PositionAlreadyOccupiedException {
+		Position position = new Position(POSITION_ONE, POSITION_ONE);
+
+		assertEquals("Continue..!!", game.play(position));	
+	}
 
 }
