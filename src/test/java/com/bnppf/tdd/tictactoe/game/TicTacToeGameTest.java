@@ -1,5 +1,6 @@
 package com.bnppf.tdd.tictactoe.game;
 
+import static com.bnppf.tdd.tictactoe.constant.TestConstants.GAME_CONTINUE_MESSAGE;
 import static com.bnppf.tdd.tictactoe.constant.TestConstants.INVALID_POSITION_THREE;
 import static com.bnppf.tdd.tictactoe.constant.TestConstants.PLAYER_O;
 import static com.bnppf.tdd.tictactoe.constant.TestConstants.PLAYER_X;
@@ -83,7 +84,7 @@ public class TicTacToeGameTest {
 	public void shouldReturnContinueIfAnyPositionAvailableForPlayer() throws PositionOutOfRangeException, PositionAlreadyOccupiedException {
 		Position position = new Position(POSITION_ONE, POSITION_ONE);
 
-		assertEquals("Continue..!!", game.play(position));	
+		assertEquals(GAME_CONTINUE_MESSAGE, game.play(position));	
 	}
 
 }

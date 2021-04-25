@@ -17,4 +17,6 @@ public final class TestConstants {
 	
 	public static final int INDEX_ZERO = 0;
 	public static final int INDEX_ONE = 1;
+	
+	public static final String GAME_CONTINUE_MESSAGE = "Continue..!!";
 }
