@@ -1,6 +1,8 @@
 package com.bnppf.tdd.tictactoe.game;
 
 import static com.bnppf.tdd.tictactoe.constant.TestConstants.GAME_WINNER_PLAYERX_MESSAGE;
+import static com.bnppf.tdd.tictactoe.constant.TestConstants.INVALID_USER_INPUT_THREE_ZERO;
+import static com.bnppf.tdd.tictactoe.constant.TestConstants.INVALID_USER_INPUT_ZERO_EMPTY;
 import static com.bnppf.tdd.tictactoe.constant.TestConstants.LINE_SEPARATOR;
 import static com.bnppf.tdd.tictactoe.constant.TestConstants.USER_INPUT_ONE;
 import static com.bnppf.tdd.tictactoe.constant.TestConstants.USER_INPUT_ONE_ONE;
@@ -55,6 +57,19 @@ public class TicTacToeGameExecutorTest {
 	public void shouldDeclarePlayerAsWinnerBasedUponUserInputsFromCommandLine() {
 		StringBuilder userInputBuilder = new StringBuilder(USER_INPUT_ZERO_ZERO).append(LINE_SEPARATOR).append(USER_INPUT_ONE_ONE).append(LINE_SEPARATOR)
 				.append(USER_INPUT_ZERO_ONE).append(LINE_SEPARATOR).append(USER_INPUT_TWO_ONE).append(LINE_SEPARATOR).append(USER_INPUT_ZERO_TWO);
+		System.setIn(new ByteArrayInputStream(userInputBuilder.toString().getBytes()));
+
+		assertEquals(GAME_WINNER_PLAYERX_MESSAGE, gameExecutor.runGame());
+	}
+	
+	@Test
+	@DisplayName("Additional scenario for declaring game result based upon user inputs")
+	public void additionalScenarioForDecalringGameResultBasedUponUserInputsFromCommandLine() {
+		StringBuilder userInputBuilder = new StringBuilder(INVALID_USER_INPUT_ZERO_EMPTY).append(LINE_SEPARATOR)
+				.append(USER_INPUT_ZERO_ZERO).append(LINE_SEPARATOR).append(USER_INPUT_ONE_ONE).append(LINE_SEPARATOR)
+				.append(USER_INPUT_ZERO_ONE).append(LINE_SEPARATOR).append(USER_INPUT_ZERO_ONE).append(LINE_SEPARATOR)
+				.append(INVALID_USER_INPUT_THREE_ZERO).append(LINE_SEPARATOR).append(USER_INPUT_TWO_ONE)
+				.append(LINE_SEPARATOR).append(USER_INPUT_ZERO_TWO);
 		System.setIn(new ByteArrayInputStream(userInputBuilder.toString().getBytes()));
 
 		assertEquals(GAME_WINNER_PLAYERX_MESSAGE, gameExecutor.runGame());

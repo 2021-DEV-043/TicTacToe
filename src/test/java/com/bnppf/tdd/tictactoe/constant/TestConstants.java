@@ -30,4 +30,6 @@ public final class TestConstants {
 	public static final String USER_INPUT_TWO_ONE = "2,1";
 	public static final String USER_INPUT_ZERO_TWO = "0,2";
 	public static final String LINE_SEPARATOR = "\n";
+	public static final String INVALID_USER_INPUT_ZERO_EMPTY = "0,";
+	public static final String INVALID_USER_INPUT_THREE_ZERO = "3,0";
 }
