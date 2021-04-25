@@ -1,5 +1,6 @@
 package com.bnppf.tdd.tictactoe.game;
 
+import static com.bnppf.tdd.tictactoe.constant.GameConstants.GAME_CONTINUE_MESSAGE;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.POSITION_OCCUPIED_EXCEPTION_MESSAGE;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.POSITION_OUT_OF_RANGE_EXCEPTION_MESSAGE;
 
@@ -26,7 +27,7 @@ public class TicTacToeGame {
 		gameBoard.placeMoveOnTheBoard(position);
 		
 		if (!gameBoard.areAllPositionOnBoardOccupied()) {
-			result = "Continue..!!";
+			result = GAME_CONTINUE_MESSAGE;
 		}
 		return result;
 	}
