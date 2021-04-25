@@ -26,7 +26,9 @@ public class TicTacToeGame {
 		validatePlayingConditions(position);
 		gameBoard.placeMoveOnTheBoard(position);
 		
-		if (!gameBoard.areAllPositionOnBoardOccupied()) {
+		if (gameBoard.isAnyRowOccupiedBySamePlayer()) {
+			result = String.format("Winner of the game is Player '%s'", gameBoard.identifyPlayerAt(position));
+		} else if (!gameBoard.areAllPositionOnBoardOccupied()) {
 			result = GAME_CONTINUE_MESSAGE;
 		}
 		return result;
