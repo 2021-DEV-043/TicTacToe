@@ -2,6 +2,8 @@ package com.bnppf.tdd.tictactoe.game;
 
 import static com.bnppf.tdd.tictactoe.constant.TestConstants.GAME_CONTINUE_MESSAGE;
 import static com.bnppf.tdd.tictactoe.constant.TestConstants.GAME_WINNER_PLAYERX_MESSAGE;
+import static com.bnppf.tdd.tictactoe.constant.TestConstants.INDEX_ONE;
+import static com.bnppf.tdd.tictactoe.constant.TestConstants.INDEX_ZERO;
 import static com.bnppf.tdd.tictactoe.constant.TestConstants.INVALID_POSITION_THREE;
 import static com.bnppf.tdd.tictactoe.constant.TestConstants.PLAYER_O;
 import static com.bnppf.tdd.tictactoe.constant.TestConstants.PLAYER_X;
@@ -91,17 +93,10 @@ public class TicTacToeGameTest {
 	@Test
 	@DisplayName("Game should declare player as winner if any row occupied by that player")
 	public void declareThePlayerAsWinnerIfThePlayerCompletelyOccupiesAnyRow() throws PositionOutOfRangeException, PositionAlreadyOccupiedException {
-		Position position1 = new Position(POSITION_ZERO, POSITION_ZERO);
-		game.play(position1);
-
-		Position position2 = new Position(POSITION_ONE, POSITION_ONE);
-		game.play(position2);
-
-		Position position3 = new Position(POSITION_ZERO, POSITION_ONE);
-		game.play(position3);
-
-		Position position4 = new Position(POSITION_TWO, POSITION_ONE);
-		game.play(position4);
+		int[][] moves = { { POSITION_ZERO, POSITION_ZERO }, { POSITION_ONE, POSITION_ONE },
+				{ POSITION_ZERO, POSITION_ONE }, { POSITION_TWO, POSITION_ONE } };
+		
+		playEarlierMoves(moves);
 
 		Position position5 = new Position(POSITION_ZERO, POSITION_TWO);
 
@@ -111,21 +106,23 @@ public class TicTacToeGameTest {
 	@Test
 	@DisplayName("Game should declare player as winner if any column occupied by that player")
 	public void declareThePlayerAsWinnerIfThePlayerCompletelyOccupiesAnyColumn() throws PositionOutOfRangeException, PositionAlreadyOccupiedException {
-		Position position1 = new Position(POSITION_ZERO, POSITION_ZERO);
-		game.play(position1);
-
-		Position position2 = new Position(POSITION_ONE, POSITION_ONE);
-		game.play(position2);
-
-		Position position3 = new Position(POSITION_ONE, POSITION_ZERO);
-		game.play(position3);
-
-		Position position4 = new Position(POSITION_TWO, POSITION_ONE);
-		game.play(position4);
+		int[][] moves = { { POSITION_ZERO, POSITION_ZERO }, { POSITION_ONE, POSITION_ONE },
+				{ POSITION_ONE, POSITION_ZERO }, { POSITION_TWO, POSITION_ONE } };
+		
+		playEarlierMoves(moves);
 
 		Position position5 = new Position(POSITION_TWO, POSITION_ZERO);
 
 		assertEquals(GAME_WINNER_PLAYERX_MESSAGE, game.play(position5));
+	}
+	
+	private void playEarlierMoves(int[][] moves) throws PositionOutOfRangeException, PositionAlreadyOccupiedException {
+		Position position;
+
+		for (int i = INDEX_ZERO; i < moves.length; i++) {
+			position = new Position(moves[i][INDEX_ZERO], moves[i][INDEX_ONE]);
+			game.play(position);
+		}
 	}
 
 }
