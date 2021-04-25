@@ -9,10 +9,19 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import com.bnppf.tdd.tictactoe.exception.InvalidUserInputException;
+
 @Component
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class TicTacToeGameExecutor {
 
+	
+	public void validateUserInputs(String[] userInputs) throws InvalidUserInputException {
+		if (isUserInputInvalid(userInputs)) {
+			throw new InvalidUserInputException("Invalid input format..!! Please pass the input in the format of row,column like 1,1");
+		}
+	}
+	
 	public boolean isUserInputInvalid(String[] userInputs) {
 		boolean isInvalid = true;
 
