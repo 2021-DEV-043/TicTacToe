@@ -14,6 +14,7 @@ import static com.bnppf.tdd.tictactoe.constant.GameConstants.GAMING_INSTRUCTION_
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.INDEX_ONE;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.INDEX_ZERO;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.INVALID_INPUT_FORMAT_EXCEPTION_MESSAGE;
+import static com.bnppf.tdd.tictactoe.constant.GameConstants.NEXT_PLAYER_INFORMATION;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.USER_INPUT_SEPARATOR;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.USER_INPUT_SIZE;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.VALID_PATTERN;
@@ -50,6 +51,9 @@ public class TicTacToeGameExecutor {
 
 		while (isGameToBeContinued(result)) {
 			try {
+				String playerToContinue = String.format(NEXT_PLAYER_INFORMATION, game.getNextPlayer());
+				LOGGER.info(playerToContinue);
+				
 				String[] input = scan.nextLine().split(USER_INPUT_SEPARATOR);
 				validateUserInputs(input);
 				result = game.play(new Position(Integer.parseInt(input[INDEX_ZERO]), Integer.parseInt(input[INDEX_ONE])));

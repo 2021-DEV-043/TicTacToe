@@ -42,4 +42,5 @@ public final class GameConstants {
 	public static final String GAMING_INSTRUCTION_SEVEN = "Player 'X' to start with the first move \n";
 	public static final String GAMING_INSTRUCTION_EIGHT = "Player 'O' to follow.. \n";
 	
+	public static final String NEXT_PLAYER_INFORMATION = "Player '%s' to mark position(row,column) on the board now..";
 }
