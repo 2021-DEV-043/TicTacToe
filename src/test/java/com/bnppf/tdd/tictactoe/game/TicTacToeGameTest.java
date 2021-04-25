@@ -129,6 +129,19 @@ public class TicTacToeGameTest {
 		assertEquals(GAME_WINNER_PLAYERX_MESSAGE, game.play(position));
 	}
 	
+	@Test
+	@DisplayName("Game should declare player as winner if top right to bottom left diagonal is occupied by that player")
+	public void declareThePlayerAsWinnerIfThePlayerCompletelyOccupiesTopRightToBottonLeftDiagonal() throws PositionOutOfRangeException, PositionAlreadyOccupiedException {
+		int[][] moves = { { POSITION_ZERO, POSITION_ZERO }, { POSITION_TWO, POSITION_ZERO },
+				{ POSITION_ONE, POSITION_ZERO }, { POSITION_ONE, POSITION_ONE }, { POSITION_ONE, POSITION_TWO } };
+
+		playEarlierMoves(moves);
+
+		Position position = new Position(POSITION_ZERO, POSITION_TWO);
+
+		assertEquals("Winner of the game is Player 'O'", game.play(position));
+	}
+	
 	private void playEarlierMoves(int[][] moves) throws PositionOutOfRangeException, PositionAlreadyOccupiedException {
 		Position position;
 

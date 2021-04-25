@@ -28,7 +28,8 @@ public class TicTacToeGame {
 		gameBoard.placeMoveOnTheBoard(position);
 		
 		if (gameBoard.isAnyRowOccupiedBySamePlayer() || gameBoard.isAnyColumnOccupiedBySamePlayer()
-				|| gameBoard.isTopLeftToBottomRightDiagonalOccupiedBySamePlayer()) {
+				|| gameBoard.isTopLeftToBottomRightDiagonalOccupiedBySamePlayer()
+				|| gameBoard.isTopRightToBottomLeftDiagonalOccupiedBySamePlayer()) {
 			result = String.format("%s '%s'", GAME_WINNER_MESSAGE, gameBoard.identifyPlayerAt(position));
 		} else if (!gameBoard.areAllPositionOnBoardOccupied()) {
 			result = GAME_CONTINUE_MESSAGE;
