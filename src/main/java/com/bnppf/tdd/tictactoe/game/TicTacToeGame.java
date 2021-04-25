@@ -44,6 +44,10 @@ public class TicTacToeGame {
 		return gameBoard.getNextPlayer();
 	}
 	
+	public void printGameBoard() {
+		gameBoard.printGameBoard();
+	}
+	
 	private boolean isDraw() {
 		return gameBoard.areAllPositionOnBoardOccupied();
 	}

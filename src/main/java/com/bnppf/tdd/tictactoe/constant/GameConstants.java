@@ -43,4 +43,8 @@ public final class GameConstants {
 	public static final String GAMING_INSTRUCTION_EIGHT = "Player 'O' to follow.. \n";
 	
 	public static final String NEXT_PLAYER_INFORMATION = "Player '%s' to mark position(row,column) on the board now..";
+	
+	public static final String BOARD_ROW_SEPARATOR = "-------------";
+	public static final String BOARD_COLUMN_SEPARATOR = "|";
+	public static final String LINE_SEPARATOR = "\n";
 }

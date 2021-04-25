@@ -57,6 +57,8 @@ public class TicTacToeGameExecutor {
 				String[] input = scan.nextLine().split(USER_INPUT_SEPARATOR);
 				validateUserInputs(input);
 				result = game.play(new Position(Integer.parseInt(input[INDEX_ZERO]), Integer.parseInt(input[INDEX_ONE])));
+				
+				game.printGameBoard();
 			} catch (InvalidUserInputException | PositionOutOfRangeException | PositionAlreadyOccupiedException exception) {
 				String errorMessage = String.format("%s %s", GAME_ERROR_MESSAGE, exception.getMessage());
 				LOGGER.error(errorMessage);
