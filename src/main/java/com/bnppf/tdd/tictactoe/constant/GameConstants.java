@@ -21,7 +21,8 @@ public final class GameConstants {
 	
 	public static final String POSITION_OUT_OF_RANGE_EXCEPTION_MESSAGE = "Invalid Position..!! Please provide a valid position within a range of 0 to 2";
 	public static final String POSITION_OCCUPIED_EXCEPTION_MESSAGE = "Position is already occupied by other player. Please choose a different position.";
-	
+	public static final String INVALID_INPUT_FORMAT_EXCEPTION_MESSAGE = "Invalid input format..!! Please pass the input in the format of row,column like 1,1";
+
 	public static final String GAME_CONTINUE_MESSAGE = "Continue..!!";
 	public static final String GAME_WINNER_MESSAGE = "Winner of the game is Player";
 	public static final String GAME_DRAW_MESSAGE = "It's a Draw Game";

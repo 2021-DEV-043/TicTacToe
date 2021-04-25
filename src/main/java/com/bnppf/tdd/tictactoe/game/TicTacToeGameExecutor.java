@@ -2,6 +2,7 @@ package com.bnppf.tdd.tictactoe.game;
 
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.INDEX_ONE;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.INDEX_ZERO;
+import static com.bnppf.tdd.tictactoe.constant.GameConstants.INVALID_INPUT_FORMAT_EXCEPTION_MESSAGE;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.USER_INPUT_SIZE;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.VALID_PATTERN;
 
@@ -18,7 +19,7 @@ public class TicTacToeGameExecutor {
 	
 	public void validateUserInputs(String[] userInputs) throws InvalidUserInputException {
 		if (isUserInputInvalid(userInputs)) {
-			throw new InvalidUserInputException("Invalid input format..!! Please pass the input in the format of row,column like 1,1");
+			throw new InvalidUserInputException(INVALID_INPUT_FORMAT_EXCEPTION_MESSAGE);
 		}
 	}
 	
