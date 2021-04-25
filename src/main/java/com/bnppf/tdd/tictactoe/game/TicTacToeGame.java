@@ -27,9 +27,7 @@ public class TicTacToeGame {
 		validatePlayingConditions(position);
 		gameBoard.placeMoveOnTheBoard(position);
 		
-		if (gameBoard.isAnyRowOccupiedBySamePlayer() || gameBoard.isAnyColumnOccupiedBySamePlayer()
-				|| gameBoard.isTopLeftToBottomRightDiagonalOccupiedBySamePlayer()
-				|| gameBoard.isTopRightToBottomLeftDiagonalOccupiedBySamePlayer()) {
+		if (isPlayerWinner()) {
 			result = String.format("%s '%s'", GAME_WINNER_MESSAGE, gameBoard.identifyPlayerAt(position));
 		} else if (!gameBoard.areAllPositionOnBoardOccupied()) {
 			result = GAME_CONTINUE_MESSAGE;
@@ -43,6 +41,12 @@ public class TicTacToeGame {
 	
 	public char getNextPlayer() {
 		return gameBoard.getNextPlayer();
+	}
+	
+	private boolean isPlayerWinner() {
+		return gameBoard.isAnyRowOccupiedBySamePlayer() || gameBoard.isAnyColumnOccupiedBySamePlayer()
+				|| gameBoard.isTopLeftToBottomRightDiagonalOccupiedBySamePlayer()
+				|| gameBoard.isTopRightToBottomLeftDiagonalOccupiedBySamePlayer();
 	}
 	
 	private void validatePlayingConditions(Position position) throws PositionOutOfRangeException, PositionAlreadyOccupiedException {
