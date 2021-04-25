@@ -1,6 +1,7 @@
 package com.bnppf.tdd.tictactoe.game;
 
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.GAME_CONTINUE_MESSAGE;
+import static com.bnppf.tdd.tictactoe.constant.GameConstants.GAME_DRAW_MESSAGE;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.GAME_WINNER_MESSAGE;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.POSITION_OCCUPIED_EXCEPTION_MESSAGE;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.POSITION_OUT_OF_RANGE_EXCEPTION_MESSAGE;
@@ -22,17 +23,15 @@ public class TicTacToeGame {
 	private GameBoard gameBoard;
 	
 	public String play(Position position) throws PositionOutOfRangeException, PositionAlreadyOccupiedException {
-		String result = null;
+		String result = GAME_CONTINUE_MESSAGE;
 		
 		validatePlayingConditions(position);
 		gameBoard.placeMoveOnTheBoard(position);
 		
 		if (isPlayerWinner()) {
 			result = String.format("%s '%s'", GAME_WINNER_MESSAGE, gameBoard.identifyPlayerAt(position));
-		} else if (gameBoard.areAllPositionOnBoardOccupied()) {
-			result = "It's a Draw Game";
-		} else {
-			result = GAME_CONTINUE_MESSAGE;
+		} else if (isDraw()) {
+			result = GAME_DRAW_MESSAGE;
 		}
 		return result;
 	}
@@ -43,6 +42,10 @@ public class TicTacToeGame {
 	
 	public char getNextPlayer() {
 		return gameBoard.getNextPlayer();
+	}
+	
+	private boolean isDraw() {
+		return gameBoard.areAllPositionOnBoardOccupied();
 	}
 	
 	private boolean isPlayerWinner() {
