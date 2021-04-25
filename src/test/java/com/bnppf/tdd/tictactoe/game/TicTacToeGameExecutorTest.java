@@ -23,7 +23,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.bnppf.tdd.tictactoe.exception.InvalidUserInputException;
 
-@SpringBootTest
+@SpringBootTest(properties = { "application.runner.enabled=false" })
 public class TicTacToeGameExecutorTest {
 	
 	@Autowired

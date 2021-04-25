@@ -25,7 +25,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.bnppf.tdd.tictactoe.model.Position;
 
-@SpringBootTest
+@SpringBootTest(properties = { "application.runner.enabled=false" })
 public class GameBoardTest {
 
 	@Autowired

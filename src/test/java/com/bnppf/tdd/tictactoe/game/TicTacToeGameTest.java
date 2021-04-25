@@ -24,7 +24,7 @@ import com.bnppf.tdd.tictactoe.exception.PositionAlreadyOccupiedException;
 import com.bnppf.tdd.tictactoe.exception.PositionOutOfRangeException;
 import com.bnppf.tdd.tictactoe.model.Position;
 
-@SpringBootTest
+@SpringBootTest(properties = { "application.runner.enabled=false" })
 public class TicTacToeGameTest {
 
 	@Autowired
