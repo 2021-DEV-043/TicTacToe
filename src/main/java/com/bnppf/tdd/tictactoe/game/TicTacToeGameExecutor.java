@@ -1,9 +1,12 @@
 package com.bnppf.tdd.tictactoe.game;
 
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.GAME_CONTINUE_MESSAGE;
+import static com.bnppf.tdd.tictactoe.constant.GameConstants.GAME_ERROR_MESSAGE;
+import static com.bnppf.tdd.tictactoe.constant.GameConstants.GAME_STARTED_MESSAGE;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.INDEX_ONE;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.INDEX_ZERO;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.INVALID_INPUT_FORMAT_EXCEPTION_MESSAGE;
+import static com.bnppf.tdd.tictactoe.constant.GameConstants.USER_INPUT_SEPARATOR;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.USER_INPUT_SIZE;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.VALID_PATTERN;
 
@@ -31,22 +34,26 @@ public class TicTacToeGameExecutor {
 	private static final Logger LOGGER = LoggerFactory.getLogger(TicTacToeGameExecutor.class);
 	
 	public String runGame() {
-		String result = "Game Started";
+		String result = GAME_STARTED_MESSAGE;
 		Scanner scan = new Scanner(System.in);
 
-		while (GAME_CONTINUE_MESSAGE.equals(result) || "Game Started".equals(result)) {
+		while (isGameToBeContinued(result)) {
 			try {
-				String[] input = scan.nextLine().split(",");
+				String[] input = scan.nextLine().split(USER_INPUT_SEPARATOR);
 				validateUserInputs(input);
 				result = game.play(new Position(Integer.parseInt(input[INDEX_ZERO]), Integer.parseInt(input[INDEX_ONE])));
 			} catch (InvalidUserInputException | PositionOutOfRangeException | PositionAlreadyOccupiedException exception) {
-				String errorMessage = String.format("%s %s", "Error while playing game...!!", exception.getMessage());
+				String errorMessage = String.format("%s %s", GAME_ERROR_MESSAGE, exception.getMessage());
 				LOGGER.error(errorMessage);
 			}
 		}
 		scan.close();
 
 		return result;
+	}
+
+	private boolean isGameToBeContinued(String result) {
+		return GAME_CONTINUE_MESSAGE.equals(result) || GAME_STARTED_MESSAGE.equals(result);
 	}
 	
 	public void validateUserInputs(String[] userInputs) throws InvalidUserInputException {

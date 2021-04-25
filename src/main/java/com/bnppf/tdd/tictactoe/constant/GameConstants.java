@@ -23,10 +23,13 @@ public final class GameConstants {
 	public static final String POSITION_OCCUPIED_EXCEPTION_MESSAGE = "Position is already occupied by other player. Please choose a different position.";
 	public static final String INVALID_INPUT_FORMAT_EXCEPTION_MESSAGE = "Invalid input format..!! Please pass the input in the format of row,column like 1,1";
 
+	public static final String GAME_STARTED_MESSAGE = "Game Started";
 	public static final String GAME_CONTINUE_MESSAGE = "Continue..!!";
 	public static final String GAME_WINNER_MESSAGE = "Winner of the game is Player";
 	public static final String GAME_DRAW_MESSAGE = "It's a Draw Game";
+	public static final String GAME_ERROR_MESSAGE = "Error while playing game...!!";
 	
 	public static final String VALID_PATTERN = "\\d+";
 	public static final int USER_INPUT_SIZE = 2;
+	public static final String USER_INPUT_SEPARATOR = ",";
 }
