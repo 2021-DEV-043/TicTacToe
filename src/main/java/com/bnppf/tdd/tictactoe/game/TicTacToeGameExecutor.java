@@ -3,6 +3,14 @@ package com.bnppf.tdd.tictactoe.game;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.GAME_CONTINUE_MESSAGE;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.GAME_ERROR_MESSAGE;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.GAME_STARTED_MESSAGE;
+import static com.bnppf.tdd.tictactoe.constant.GameConstants.GAMING_INSTRUCTION_EIGHT;
+import static com.bnppf.tdd.tictactoe.constant.GameConstants.GAMING_INSTRUCTION_FIVE;
+import static com.bnppf.tdd.tictactoe.constant.GameConstants.GAMING_INSTRUCTION_FOUR;
+import static com.bnppf.tdd.tictactoe.constant.GameConstants.GAMING_INSTRUCTION_ONE;
+import static com.bnppf.tdd.tictactoe.constant.GameConstants.GAMING_INSTRUCTION_SEVEN;
+import static com.bnppf.tdd.tictactoe.constant.GameConstants.GAMING_INSTRUCTION_SIX;
+import static com.bnppf.tdd.tictactoe.constant.GameConstants.GAMING_INSTRUCTION_THREE;
+import static com.bnppf.tdd.tictactoe.constant.GameConstants.GAMING_INSTRUCTION_TWO;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.INDEX_ONE;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.INDEX_ZERO;
 import static com.bnppf.tdd.tictactoe.constant.GameConstants.INVALID_INPUT_FORMAT_EXCEPTION_MESSAGE;
@@ -36,6 +44,9 @@ public class TicTacToeGameExecutor {
 	public String runGame() {
 		String result = GAME_STARTED_MESSAGE;
 		Scanner scan = new Scanner(System.in);
+		
+		String instruction = displayGamingInstructions();
+		LOGGER.info(instruction);
 
 		while (isGameToBeContinued(result)) {
 			try {
@@ -50,6 +61,19 @@ public class TicTacToeGameExecutor {
 		scan.close();
 
 		return result;
+	}
+	
+	private String displayGamingInstructions() {
+		StringBuilder builder = new StringBuilder();
+		builder.append(GAMING_INSTRUCTION_ONE);
+		builder.append(GAMING_INSTRUCTION_TWO);
+		builder.append(GAMING_INSTRUCTION_THREE);
+		builder.append(GAMING_INSTRUCTION_FOUR);
+		builder.append(GAMING_INSTRUCTION_FIVE);
+		builder.append(GAMING_INSTRUCTION_SIX);
+		builder.append(GAMING_INSTRUCTION_SEVEN);
+		builder.append(GAMING_INSTRUCTION_EIGHT);
+		return builder.toString();
 	}
 
 	private boolean isGameToBeContinued(String result) {

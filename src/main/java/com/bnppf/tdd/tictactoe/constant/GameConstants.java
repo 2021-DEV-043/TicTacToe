@@ -32,4 +32,14 @@ public final class GameConstants {
 	public static final String VALID_PATTERN = "\\d+";
 	public static final int USER_INPUT_SIZE = 2;
 	public static final String USER_INPUT_SEPARATOR = ",";
+	
+	public static final String GAMING_INSTRUCTION_ONE = "\nWelcome to Tic Tac Toe Game..!! \n";
+	public static final String GAMING_INSTRUCTION_TWO = "Game proceeds by players alternatively placing X’s and O’s on the board \n";
+	public static final String GAMING_INSTRUCTION_THREE = "Players to provide position in the format row,column as 0,2 \n";
+	public static final String GAMING_INSTRUCTION_FOUR = "Game is continued till either of the below two conditions are meet \n";
+	public static final String GAMING_INSTRUCTION_FIVE = "Until a winner can be concluded for which a player should be able to draw three X’s or three O’s in either of row, column or any diagonal\n";
+	public static final String GAMING_INSTRUCTION_SIX = "Or game be declared as draw, If all nine squares are filled \n";
+	public static final String GAMING_INSTRUCTION_SEVEN = "Player 'X' to start with the first move \n";
+	public static final String GAMING_INSTRUCTION_EIGHT = "Player 'O' to follow.. \n";
+	
 }
